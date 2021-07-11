@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using sample_webapi.Filters;
 using sample_webapi.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,8 @@ namespace sample_webapi.Controllers
     // CRUD
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
+    [AddHeader("BOA","ProductInformation")]
     public class ProductsController : ControllerBase
     {
         private readonly ProductDBContext _context;
@@ -30,7 +34,7 @@ namespace sample_webapi.Controllers
 
         // Get: Products By ID
         [HttpGet("{id}")]
-       
+
         [Produces("application/json", "application/xml")]
         public async Task<IActionResult> GetProduct(int id)
         {
@@ -39,7 +43,7 @@ namespace sample_webapi.Controllers
             {
                 return NotFound();
             }
-            return Ok(new {  ProductName= product.Name,Price =product.Price });
+            return Ok(new { ProductName = product.Name, Price = product.Price });
         }
 
         // POST :Add New Product
@@ -47,20 +51,25 @@ namespace sample_webapi.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [CustomActionFilter]
         public async Task<IActionResult> SaveProduct([FromBody] ProductBindigTarget target)
         {
-            if (target == null)
-            {
-                return BadRequest();
-            }
-            if (ModelState.IsValid)
-            {
-                await _context.Products.AddAsync(target.ToProduct());
-                await _context.SaveChangesAsync();
-                return Ok();
-            }
-            return BadRequest(ModelState);
-           
+
+            await _context.Products.AddAsync(target.ToProduct());
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+        // PUT :Update Product
+        [HttpPut]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [CustomActionFilter]
+        public async Task<IActionResult> UpdateProduct([FromBody] Product product)
+        {
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
 
         // DELETE :  Product BY ID
@@ -72,27 +81,7 @@ namespace sample_webapi.Controllers
             return Ok();
         }
 
-        // PUT :Update Product
-        [HttpPut]
-        [Consumes("application/json")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdateProduct([FromBody] Product product)
-        {
-            if (product ==null)
-            {
-                return BadRequest();
-            }
-            if (ModelState.IsValid)
-            {
-                _context.Products.Update(product);
-                await _context.SaveChangesAsync();
-                return Ok();
-
-            }
-            return BadRequest(ModelState);
-         
-        }
+        
 
 
     }

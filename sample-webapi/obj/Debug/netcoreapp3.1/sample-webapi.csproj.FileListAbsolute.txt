@@ -69,3 +69,9 @@ D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\b
 D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\obj\Debug\netcoreapp3.1\sample-webapi.MvcApplicationPartsAssemblyInfo.cs
+D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\FreeLancerAssignments\BankOfAmericaBatch3\boabatchthreewebapi\sample-webapi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
